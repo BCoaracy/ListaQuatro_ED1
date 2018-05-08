@@ -1,21 +1,23 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package listaquatro;
 
-/**
- *
- * @author Bruno
- */
+import java.util.Scanner;
+
+
 public class ListaQuatro {
 
-    /**
-     * @param args the command line arguments
-     */
+    
     public static void main(String[] args) {
-        // TODO code application logic here
+        MetodosDemoniacos md = new MetodosDemoniacos();
+        boolean s = true;
+        Scanner scan = new Scanner(System.in);
+        
+        while(s==true){
+            md.exercicio1();
+            System.out.println("Informe 0 para continuar: ");
+            if(scan.nextInt()!=0){
+                s = false;
+            }
+        }
     }
     
 }
