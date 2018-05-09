@@ -17,4 +17,21 @@ public class MetodosDemoniacos extends ListaEncadeada{
         
     }
     
+    public void exercicio3(){
+        int tamanho = this.tamanho();
+        for(int i = 1; i<=tamanho;i++){
+            if(i%2==0){
+                remove(i);
+            }
+        }
+    }
+    
+    public void exercicio4(ListaEncadeada lista1, ListaEncadeada lista2){
+        int tamanhoLista2 = lista2.tamanho();
+        for(int i=0;i<tamanhoLista2;i++){
+            No no = lista2.removeDoComecoComRetorno();
+            String elemento = (String) no.getElemento();
+            lista1.adicionaNoFim(elemento);
+        }
+    }
 }

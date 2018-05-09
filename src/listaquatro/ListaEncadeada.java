@@ -5,7 +5,7 @@ public class ListaEncadeada {
     private No primeiro;
     private No ultimo;
     private int totalDeElementos;
-
+    
     public void adiciona(Object elemento) {
         No no = new No(elemento);
         if(primeiro==null && ultimo==null){
@@ -36,6 +36,30 @@ public class ListaEncadeada {
             //quando na posicao desejada
             no.setProximo(noAux.getProximo());
             noAux.setProximo(no);
+        }
+        this.totalDeElementos++;
+    }
+    
+    public void adicionaNoComeco(Object elemento) {
+        No no = new No(elemento);
+        if(primeiro == null){
+            primeiro = no;
+            ultimo = no;
+        }else{
+            no.setProximo(primeiro);
+            primeiro = no;
+        }
+        this.totalDeElementos++;
+    }
+    
+    public void adicionaNoFim(Object elemento) {
+        No no = new No(elemento);
+        if(primeiro == null){
+            primeiro = no;
+            ultimo = no;
+        }else{
+            ultimo.setProximo(no);
+            ultimo = no;
         }
         this.totalDeElementos++;
     }
@@ -77,22 +101,19 @@ public class ListaEncadeada {
         
         return false;
     }
-
-    public void adicionaNoComeco(Object elemento) {
-        No no = new No(elemento);
-        if(primeiro == null){
-            primeiro = no;
-        }else{
-            no.setProximo(primeiro);
-            primeiro = no;
-        }
-        this.totalDeElementos++;
-    }
-
+    
     public void removeDoComeco() {
         primeiro = primeiro.getProximo();
         this.totalDeElementos--;
     }
+    
+    public No removeDoComecoComRetorno() {
+        No noRetorno = primeiro;
+        primeiro = primeiro.getProximo();
+        this.totalDeElementos--;
+        return noRetorno;
+    }
+    
 
     public void removeDoFim() {
         remove(tamanho());
