@@ -34,4 +34,20 @@ public class MetodosDemoniacos extends ListaEncadeada{
             lista1.adicionaNoFim(elemento);
         }
     }
+    
+    public void exercicio5(ListaEncadeada lista1, ListaEncadeada lista2){
+        
+        if(lista1.ordenada()==false){
+            lista1.ordenarLista();
+        }
+        if(lista2.ordenada()==false){
+            lista2.ordenarLista();
+        }
+        
+        exercicio4(lista1, lista2);
+        
+        lista1.ordenarLista();
+        
+    }
+    
 }

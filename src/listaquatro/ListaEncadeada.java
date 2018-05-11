@@ -6,6 +6,8 @@ public class ListaEncadeada {
     private No ultimo;
     private int totalDeElementos;
     
+    
+//METODOS PARA ADICIONAR ELEMENTOS
     public void adiciona(Object elemento) {
         No no = new No(elemento);
         if(primeiro==null && ultimo==null){
@@ -63,7 +65,9 @@ public class ListaEncadeada {
         }
         this.totalDeElementos++;
     }
-
+//FIM
+    
+//METODOS PARA REMOVER
     public void remove(int posicao) {
         
         No noAux = this.primeiro;
@@ -81,7 +85,27 @@ public class ListaEncadeada {
         
         this.totalDeElementos--;
     }
+    
+    public void removeDoComeco() {
+        primeiro = primeiro.getProximo();
+        this.totalDeElementos--;
+    }
+    
+    public No removeDoComecoComRetorno() {
+        No noRetorno = primeiro;
+        primeiro = primeiro.getProximo();
+        this.totalDeElementos--;
+        return noRetorno;
+    }
+    
 
+    public void removeDoFim() {
+        remove(tamanho());
+    }
+//FIM
+    
+//MISCELANEOUS
+    
     public int tamanho() { 
         return totalDeElementos;
     }
@@ -101,24 +125,28 @@ public class ListaEncadeada {
         
         return false;
     }
-    
-    public void removeDoComeco() {
-        primeiro = primeiro.getProximo();
-        this.totalDeElementos--;
+
+    public boolean ordenada(){
+        No no = primeiro;
+        for(int i =0;i<this.tamanho();i++){
+            if((int)no.getElemento()>(int)no.getProximo().getElemento())
+                return false;
+            no = no.getProximo();
+        }
+        return true;
     }
     
-    public No removeDoComecoComRetorno() {
-        No noRetorno = primeiro;
-        primeiro = primeiro.getProximo();
-        this.totalDeElementos--;
-        return noRetorno;
-    }
     
-
-    public void removeDoFim() {
-        remove(tamanho());
+    public void ordenarLista(){
+        No no = this.primeiro;
+        No noAux = new No(null);
+        while(this.ordenada()==false){
+            if((int)no.getElemento()>(int)no.getProximo().getElemento()){
+                noAux.setElemento(no.getProximo().getElemento());
+                no.getProximo().setElemento(no.getElemento());
+                no.setElemento(noAux.getElemento());
+            }
+            no = no.getProximo();
+        }
     }
-
-   
-
 }
